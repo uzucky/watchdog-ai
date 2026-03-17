@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "watchdog-ai"
+version = "0.1.0"
+description = "Runtime verification for AI-built systems. Catch silent failures, contradictions, and stale data before they cost you."
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.7"
+authors = [{name = "Soul Automation"}]
+keywords = ["ai", "monitoring", "verification", "watchdog", "devtools"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+    "Topic :: System :: Monitoring",
+]
+dependencies = [
+    "pyyaml>=5.0",
+]
+
+[project.scripts]
+wdog = "wdog.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/uzucky/watchdog-ai"
+Issues = "https://github.com/uzucky/watchdog-ai/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,67 @@
+# watchdog.yaml for Soul Trading Bots
+# This is how we monitor our own AI-built trading infrastructure
+
+project: soul-trading-bots
+interval: 1h
+
+checks:
+  # === Services ===
+  - name: HF Bot running
+    type: process
+    match: "com.soul.paper-highfreq"
+    platform: launchd
+    severity: critical
+
+  - name: Stock Bot running
+    type: process
+    match: "com.soul.paper-stocks"
+    platform: launchd
+    severity: critical
+
+  - name: Polymarket Bot running
+    type: process
+    match: "com.soul.paper-polymarket"
+    platform: launchd
+    severity: critical
+
+  - name: Forecast Engine running
+    type: process
+    match: "com.soul.forecast-engine"
+    platform: launchd
+    severity: critical
+
+  - name: Evolution Engine running
+    type: process
+    match: "com.soul.evolution-engine"
+    platform: launchd
+    severity: warning
+
+  # === Data Freshness ===
+  - name: HF trade data fresh
+    type: freshness
+    path: ../../../trading/ai_methods/highfreq/data/hf_paper_trades.json
+    max_age: 26h
+    severity: warning
+
+  - name: Forecast data fresh
+    type: freshness
+    path: ../../../trading/prediction/data/forecast_state.json
+    max_age: 26h
+    severity: warning
+
+  # === Capital Protection ===
+  - name: HF capital above 50%
+    type: assertion
+    source: ../../../trading/ai_methods/highfreq/data/hf_paper_trades.json
+    conditions:
+      - expr: "$.capital > 500"
+        message: "HF capital below $500 (50% of initial)"
+        severity: critical
+
+  - name: Stock capital above 50%
+    type: assertion
+    source: ../../../trading/stocks/data/stock_paper_trades.json
+    conditions:
+      - expr: "$.capital > 5000"
+        message: "Stock capital below $5000 (50% of initial)"
+        severity: critical
