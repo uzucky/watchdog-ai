@@ -1,6 +1,12 @@
 # watchdog-ai
 
-Runtime verification for AI-built systems. Catch silent failures, contradictions, and stale data before they cost you.
+[![PyPI version](https://img.shields.io/pypi/v/watchdog-ai)](https://pypi.org/project/watchdog-ai/)
+[![Python](https://img.shields.io/pypi/pyversions/watchdog-ai)](https://pypi.org/project/watchdog-ai/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+**Runtime verification for AI-built systems.** Catch silent failures, contradictions, and stale data before they cost you.
+
+> Your AI writes code fast. `watchdog-ai` checks if it's actually working.
 
 ## The Problem
 
@@ -95,6 +101,24 @@ wdog list           # List configured checks
 
 Works with CI/CD, cron, and monitoring systems.
 
+## Why Not Just Use...
+
+| Tool | What It Does | Gap watchdog-ai Fills |
+|------|-------------|----------------------|
+| Datadog / Grafana | Infrastructure metrics | Doesn't check if your *AI logic* is correct |
+| LangSmith / Helicone | LLM API call tracing | Doesn't verify the *output* is sane |
+| Pre-commit / CI | Catches bugs before merge | Nothing runs *after* deploy |
+| Cron + bash scripts | Custom health checks | No unified config, no severity levels, no alerting |
+
+**watchdog-ai lives in the gap between "deployed" and "actually working."**
+
+## Use Cases
+
+- **Trading bots** — Verify positions match predictions, capital stays above thresholds
+- **Data pipelines** — Catch stale files, broken scrapers, silent API failures
+- **AI agents** — Ensure outputs are fresh, processes are alive, logs are clean
+- **Any automated system** — If it runs unattended, it needs a watchdog
+
 ## Born from Real Pain
 
 This tool exists because:
@@ -103,6 +127,10 @@ This tool exists because:
 - A strategy looked great on 2 days of data but was a loser over 6 months
 
 We built watchdog for ourselves first. Now it's yours.
+
+## Contributing
+
+Issues and PRs welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) if it exists, or just open an issue.
 
 ## License
 
