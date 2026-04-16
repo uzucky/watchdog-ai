@@ -1,6 +1,7 @@
 # watchdog-ai
 
 [![PyPI version](https://img.shields.io/pypi/v/watchdog-ai)](https://pypi.org/project/watchdog-ai/)
+[![Downloads](https://img.shields.io/pypi/dm/watchdog-ai)](https://pypi.org/project/watchdog-ai/)
 [![Python](https://img.shields.io/pypi/pyversions/watchdog-ai)](https://pypi.org/project/watchdog-ai/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -127,6 +128,16 @@ This tool exists because:
 - A strategy looked great on 2 days of data but was a loser over 6 months
 
 We built watchdog for ourselves first. Now it's yours.
+
+## In Production
+
+watchdog-ai monitors our own autonomous trading system 24/7:
+
+- **3 trading bots** — FR/GOV/Grid strategies with live capital
+- **5 AI daemons** — evolution engine, content engine, signal collectors
+- **129 downloads/month** on PyPI
+
+Every feature exists because we needed it first.
 
 ## Contributing
 
